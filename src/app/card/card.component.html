@@ -1,0 +1,50 @@
+<br/><br/>
+<div class="row">
+  <div class="col-md-12">
+    <mdb-card>
+      <div style="text-align: center; padding-top: 20px">
+        <!--<img src="../../assets/img/video-camera.png">-->
+        <h5 class="pink-text">
+          <mdb-icon fas icon="utensils"></mdb-icon><strong>Selecione uma opção:</strong></h5>
+        <br/><br/>
+        <div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input checked type="radio" [(ngModel)]="options" [value]="true"
+                   class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample" mdbInput>
+            <label class="custom-control-label" for="defaultInline1">Inserir URL do arquivo</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" [(ngModel)]="options" [value]="false"
+                   class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample" mdbInput>
+            <label class="custom-control-label" for="defaultInline2">Carregar arquivo do computador</label>
+          </div>
+        </div>
+        <br/>
+      </div>
+    </mdb-card>
+    <br/>
+    <mdb-card *ngIf="!options" cascade="true" narrower="true">
+      <mdb-card-body cascade="true" class="text-center">
+        <h5 class="pink-text">
+          <mdb-icon fas icon="utensils"></mdb-icon> Upload</h5>
+        <h4 class="card-title">Selecione um arquivo de video</h4>
+        <mdb-card-text>
+          Clique no botão "Browse e selecione um arquivo de video do seu computador e clique no botão "Converter video".
+        </mdb-card-text>
+        <app-upload (video)="setVideo"></app-upload>
+      </mdb-card-body>
+    </mdb-card>
+    <mdb-card *ngIf="options" cascade="true" narrower="true">
+      <mdb-card-body cascade="true" class="text-center">
+        <h5 class="pink-text">
+          <mdb-icon fas icon="utensils"></mdb-icon>URL</h5>
+        <h4 class="card-title">Digite a URL do arquivo</h4>
+        <mdb-card-text>
+          Digite a url completa do video a ser convertido e clique no botão "Converter video".
+        </mdb-card-text>
+        <app-url></app-url>
+      </mdb-card-body>
+    </mdb-card>
+  </div>
+</div>
+<br/><br/><br/>

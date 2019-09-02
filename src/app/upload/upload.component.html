@@ -1,0 +1,9 @@
+<form [formGroup]="formImport">
+  <div class="file-field md-form">
+    <div class="custom-file" gradient="aqua">
+      <input type="file" class="custom-file-input" multiple formControlName="importFile" id="importFile" (change)="onFileChange($event.target.files)">
+      <label class="custom-file-label" #labelImport for="importFile"><i class="fa-var-search"></i></label>
+    </div>
+  </div>
+  <button mdbBtn type="button" rounded="true" gradient="aqua" (click)="convert()"  mdbWavesEffect>Converter video</button>
+</form>
