@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Video} from '../shared/models/video.model';
 
 @Component({
@@ -8,15 +8,18 @@ import {Video} from '../shared/models/video.model';
 })
 export class CardComponent implements OnInit {
 
-  @Input() setVideo: Video;
-  @Output() video: Video;
+  @Output() video: EventEmitter<any> = new EventEmitter<any>();
 
   private options = true;
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.setVideo);
   }
+
+  reciverFeedback(video) {
+    this.video.emit(video);
+  }
+
 
 }

@@ -11,6 +11,8 @@ import { UploadComponent } from './upload/upload.component';
 import { CardComponent } from './card/card.component';
 import {FormsModule, NgControl, ReactiveFormsModule} from '@angular/forms';
 import { UrlComponent } from './url/url.component';
+import {ConverterService} from './shared/services/converter.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,10 @@ import { UrlComponent } from './url/url.component';
     FormsModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ConverterService],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ]
 })

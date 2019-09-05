@@ -31,7 +31,7 @@
         <mdb-card-text>
           Clique no botão "Browse e selecione um arquivo de video do seu computador e clique no botão "Converter video".
         </mdb-card-text>
-        <app-upload (video)="setVideo"></app-upload>
+        <app-upload (file)="reciverFeedback($event)"></app-upload>
       </mdb-card-body>
     </mdb-card>
     <mdb-card *ngIf="options" cascade="true" narrower="true">
@@ -42,7 +42,7 @@
         <mdb-card-text>
           Digite a url completa do video a ser convertido e clique no botão "Converter video".
         </mdb-card-text>
-        <app-url></app-url>
+        <app-url (url)="reciverFeedback($event)"></app-url>
       </mdb-card-body>
     </mdb-card>
   </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-url',
@@ -7,11 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UrlComponent implements OnInit {
 
+  formURL: FormGroup;
+  @Output() url: EventEmitter<any> = new EventEmitter<any>();
 
-
-  constructor() { }
+  constructor() {
+    this.formURL = new FormGroup({
+      url: new FormControl('', null)
+    });
+  }
 
   ngOnInit() {
+  }
+
+  convertURL(): void {
+    const url = this.formURL.get('url').value;
+    this.url.emit(url);
   }
 
 }

@@ -1,6 +1,5 @@
-import {Component, ElementRef, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Video} from '../shared/models/video.model';
 
 @Component({
   selector: 'app-upload',
@@ -13,19 +12,18 @@ export class UploadComponent implements OnInit {
   @ViewChild('labelImport')
   labelImport: ElementRef;
 
-  @Output() video: Video;
+  @Output() file: EventEmitter<FormData> = new EventEmitter<FormData>();
 
   formImport: FormGroup;
   fileToUpload: File = null;
 
   constructor() {
     this.formImport = new FormGroup({
-      importFile: new FormControl('', Validators.required)
+      importFile: new FormControl('', null)
     });
   }
 
   ngOnInit() {
-    this.video = null;
   }
 
   onFileChange(files: FileList) {
@@ -35,20 +33,15 @@ export class UploadComponent implements OnInit {
     this.fileToUpload = files.item(0);
   }
 
-  convert(): void {
-    this.video.fileName = this.getFileName(this.fileToUpload.name);
-    this.video.size = this.fileToUpload.size;
-    this.video.file = this.getFormData(this.fileToUpload);
+  convertFile(): void {
+    const file = this.getFormData(this.fileToUpload);
+    this.file.emit(file);
   }
 
   getFormData(file: File): FormData {
     const formdata: FormData = new FormData();
     formdata.append('file', file);
     return formdata;
-  }
-
-  getFileName(file: string): string {
-    return file.substring(file.lastIndexOf('/'), file.indexOf('.'));
   }
 
 }
