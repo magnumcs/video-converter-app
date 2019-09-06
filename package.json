@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~8.2.4",
     "@angular/router": "~8.2.4",
     "angular-bootstrap-md": "^8.2.0",
+    "bitmovin-player": "^8.16.1",
     "chart.js": "^2.5.0",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",

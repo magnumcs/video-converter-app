@@ -13,6 +13,7 @@ import {FormsModule, NgControl, ReactiveFormsModule} from '@angular/forms';
 import { UrlComponent } from './url/url.component';
 import {ConverterService} from './shared/services/converter.service';
 import {HttpClientModule} from '@angular/common/http';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {HttpClientModule} from '@angular/common/http';
     ConverterComponent,
     UploadComponent,
     CardComponent,
-    UrlComponent
+    UrlComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
