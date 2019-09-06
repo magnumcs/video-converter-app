@@ -14,6 +14,7 @@ import { UrlComponent } from './url/url.component';
 import {ConverterService} from './shared/services/converter.service';
 import {HttpClientModule} from '@angular/common/http';
 import { PlayerComponent } from './player/player.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PlayerComponent } from './player/player.component';
     UploadComponent,
     CardComponent,
     UrlComponent,
-    PlayerComponent
+    PlayerComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
