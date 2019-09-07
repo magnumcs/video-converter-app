@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~8.2.4",
+    "@angular/animations": "^8.2.5",
     "@angular/common": "^8.2.4",
     "@angular/compiler": "~8.2.4",
     "@angular/core": "^8.2.4",
@@ -25,6 +25,8 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
+    "ngx-spinner": "^8.0.3",
+    "ngx-toastr": "^10.2.0",
     "rxjs": "~6.5.2",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

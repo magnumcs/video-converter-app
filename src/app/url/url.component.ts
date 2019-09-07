@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-url',
@@ -11,7 +12,7 @@ export class UrlComponent implements OnInit {
   formURL: FormGroup;
   @Output() url: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() {
+  constructor(private toastr: ToastrService) {
     this.formURL = new FormGroup({
       url: new FormControl('', null)
     });
@@ -22,7 +23,13 @@ export class UrlComponent implements OnInit {
 
   convertURL(): void {
     const url = this.formURL.get('url').value;
-    this.url.emit(url);
+    if (url === '') {
+      this.toastr.warning('É necessário carregar um arquivo para prosseguir.', 'Campo obrigatório.', {
+        timeOut: 3000
+      });
+    } else {
+      this.url.emit(url);
+    }
   }
 
 }

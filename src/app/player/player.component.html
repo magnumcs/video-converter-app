@@ -9,10 +9,10 @@
             <mdb-card cascade="true" narrower="true">
               <mdb-card-body cascade="true" class="text-center">
                 <h5 class="pink-text">
-                  <mdb-icon fas icon="utensils"></mdb-icon> Upload</h5>
-                <h4 class="card-title">Selecione um arquivo de video</h4>
+                  <mdb-icon fas icon="utensils"></mdb-icon> PLAYER </h5>
+                <h4 class="card-title">Protocolo: {{type}}</h4>
                 <mdb-card-text>
-                  Clique no botão "Browse e selecione um arquivo de video do seu computador e clique no botão "Converter video".
+                  <input style="text-align: center" type="text" [(ngModel)]="url" disabled class="form-control">
                 </mdb-card-text>
                 <div id="my-player"></div>
               </mdb-card-body>

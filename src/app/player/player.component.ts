@@ -1,32 +1,47 @@
-import {AfterViewChecked, Component, OnInit} from '@angular/core';
-import {Player} from 'bitmovin-player';
+import {Component, Input, OnInit} from '@angular/core';
+import {Player, PlayerEvent} from 'bitmovin-player';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html'
 })
-export class PlayerComponent implements AfterViewChecked {
-  ngAfterViewChecked() {
-    setTimeout(() => {
-      const container = document.getElementById('my-player');
-      const playerConfig = {
-        key: '945cf862-d48e-4f07-94a5-aeaa67969bfd'
-      };
-      const source = {
-        // dash: 'https://bitmovin-a.akamaihd.net/content/MI201109210084_1/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd',
-        // hls: 'https://bitmovin-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8',
-        progressive: 'https://bitmovin-a.akamaihd.net/content/MI201109210084_1/MI201109210084_mpeg-4_hd_high_1080p25_10mbits.mp4',
-        // poster: 'https://bitmovin-a.akamaihd.net/content/MI201109210084_1/poster.jpg'
-      };
-      const player = new Player(container, playerConfig); // const player = new bitmovin.player.Player(container, playerConfig);
-      player.load(source).then(
-        play => {
-          console.log('Successfully created Bitmovin Player instance');
-        },
-        reason => {
-          console.log('Error while creating Bitmovin Player instance');
-        }
-      );
-    }, 3000);
+export class PlayerComponent implements OnInit {
+  type: string;
+  url: string;
+
+  constructor() {
+  }
+
+  ngOnInit() {
+    this.type = this.getProtocol(history.state.data.key.slice(history.state.data.key.lastIndexOf('.'), history.state.data.key.length));
+    this.url = history.state.data.url;
+    this.getVideo();
+  }
+
+  getVideo() {
+    const config = {
+      key: environment.bitmovin_apikey
+    };
+
+    const player = new Player(document.getElementById('my-player'), config);
+
+    player.on(PlayerEvent.Playing, () => console.log('player is playing'));
+    player.load({
+      hls: history.state.data.url,
+    }).then(() => {
+      player.play();
+    });
+  }
+
+  getProtocol(type: string): string {
+    switch (type) {
+      case '.mp4':
+        return this.type = 'Progressive';
+      case '.m3u8':
+        return this.type = 'HLS';
+      case '.mpd':
+        return this.type = 'MPEG-DASH';
+    }
   }
 }

@@ -1,5 +1,6 @@
 import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-upload',
@@ -17,7 +18,7 @@ export class UploadComponent implements OnInit {
   formImport: FormGroup;
   fileToUpload: File = null;
 
-  constructor() {
+  constructor(private toastr: ToastrService) {
     this.formImport = new FormGroup({
       importFile: new FormControl('', null)
     });
@@ -34,8 +35,14 @@ export class UploadComponent implements OnInit {
   }
 
   convertFile(): void {
-    const file = this.getFormData(this.fileToUpload);
-    this.file.emit(file);
+    if (this.fileToUpload == null) {
+      this.toastr.warning('É necessário carregar um arquivo para prosseguir.', 'Campo obrigatório.', {
+        timeOut: 3000
+      });
+    } else {
+      const file = this.getFormData(this.fileToUpload);
+      this.file.emit(file);
+    }
   }
 
   getFormData(file: File): FormData {

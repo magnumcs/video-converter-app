@@ -9,12 +9,14 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { ConverterComponent } from './converter/converter.component';
 import { UploadComponent } from './upload/upload.component';
 import { CardComponent } from './card/card.component';
-import {FormsModule, NgControl, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UrlComponent } from './url/url.component';
 import {ConverterService} from './shared/services/converter.service';
 import {HttpClientModule} from '@angular/common/http';
 import { PlayerComponent } from './player/player.component';
 import { AboutComponent } from './about/about.component';
+import {NgxSpinnerModule, NgxSpinnerService} from 'ngx-spinner';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { AboutComponent } from './about/about.component';
     CardComponent,
     UrlComponent,
     PlayerComponent,
-    AboutComponent
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,9 @@ import { AboutComponent } from './about/about.component';
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule,
+    ToastrModule.forRoot()
   ],
   providers: [ConverterService],
   bootstrap: [AppComponent],
