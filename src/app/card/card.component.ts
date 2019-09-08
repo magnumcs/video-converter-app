@@ -10,7 +10,7 @@ export class CardComponent implements OnInit {
 
   @Output() video: EventEmitter<any> = new EventEmitter<any>();
 
-  private options = true;
+  options = true;
 
   constructor() { }
 
