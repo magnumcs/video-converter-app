@@ -41,8 +41,8 @@ export class ConverterComponent implements OnInit {
         }
       });
     } else {
+      this.spinnerService.show();
       this.converterService.convertFileURL(video).subscribe(v => {
-        this.spinnerService.show();
         this.router.navigate(['/player'], {state: {data: v}});
         this.spinnerService.hide();
       });

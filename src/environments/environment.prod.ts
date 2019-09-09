@@ -6,5 +6,5 @@ export const environment = {
     file: API + '/converter/anytowebfile',
     url: API + '/converter/anytoweburl',
   },
-  bitmovin_apikey: 'bf6ef996-8bd8-4429-bded-9d49bbcd83f7'
+  bitmovin_player_key: '64ff28d0-1c86-4428-b4fe-1394c1fd2feb'
 };

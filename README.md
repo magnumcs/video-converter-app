@@ -1,28 +1,31 @@
 # VideoConverterApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
+## Resumo
+Sistema experimental para conversão de vídeos em formatos tradicionais para formatos da web. 
+Atualmente o protocolo suportado é HLS, pelo fato de ter maior compatibilidade com a maioria dos navegadores, sendo eles o Safari. O formato MPEG-DASH será incluído em breve após testes de maior fluidez.
+
+## Tecnologias utilizadas
+
+O projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
+Foi utilizado o framework mdb-bootstrap-material para desenvolvimento visual das telas e integração com o player da plataforma Bitmovin.
+
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Execute na pasta no projeto `ng serve` for usar o modo dev. Navegue até a url `http://localhost:4200/`.
 
-## Code scaffolding
+## Uso em produção
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+A url para utilização da sistema em produção é http://ec2-3-208-10-49.compute-1.amazonaws.com:8081
 
-## Build
+## Funcionamento
+A tela principal do sistema do sistema constia em dois opções de escolha para conversãp: Uma para usar URL do arquivo de video e
+e outra para carregar um arquivo do computador. Ao clicar no botão converter o sistema entrará em modo de espera e quando finalizado será
+redirecionado para tela onde será exibido o video convertido e a url para fazer download do mesmo.
+Além disso foi implementada uma tela para maiores informações sistema e link para as o github e linkedin do autor.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+##Docker e nginx
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-# video-converter-app
+Além disso foi utilizado Docker para integrado na EC2. Foi criada uma instancia onde o container foi inicializado somente para uso do serviço. 
+Maiores informações sobre o processo se encontram no Dockerfile anexado ao projeto. Foi utilizado também o nginx para controle de rotas, configurado 
+dentro do container.

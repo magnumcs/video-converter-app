@@ -21,7 +21,7 @@ export class PlayerComponent implements OnInit {
 
   getVideo() {
     const config = {
-      key: environment.bitmovin_apikey
+      key: environment.bitmovin_player_key
     };
 
     const player = new Player(document.getElementById('my-player'), config);
