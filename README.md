@@ -24,7 +24,7 @@ e outra para carregar um arquivo do computador. Ao clicar no botão converter o 
 redirecionado para tela onde será exibido o video convertido e a url para fazer download do mesmo.
 Além disso foi implementada uma tela para maiores informações sistema e link para as o github e linkedin do autor.
 
-##Docker e nginx
+## Docker e nginx
 
 Além disso foi utilizado Docker para integrado na EC2. Foi criada uma instancia onde o container foi inicializado somente para uso do serviço. 
 Maiores informações sobre o processo se encontram no Dockerfile anexado ao projeto. Foi utilizado também o nginx para controle de rotas, configurado 
